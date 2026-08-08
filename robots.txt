@@ -1,0 +1,22 @@
+User-agent: *
+Allow: /
+
+# Specifically allow major AI engines
+User-agent: GPTBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+User-agent: Applebot-Extended
+Allow: /
+
+# Specifically block aggressive non-value scrapers
+User-agent: Bytespider
+Disallow: /
+
+Sitemap: https://bongshaiengineering.com/sitemap.xml

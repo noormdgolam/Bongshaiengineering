@@ -1,0 +1,26 @@
+{
+  "version": "1.0",
+  "site": "https://www.bongshaiengineering.com",
+  "actions": [
+    {
+      "id": "submit_contact_form",
+      "name": "Submit Contact Form",
+      "description": "Send a general business or project inquiry to Bongshai Engineering & Construction.",
+      "method": "declarative",
+      "endpoint": "/contact-us.html",
+      "parameters": {
+        "required": ["name", "email", "phone", "message"]
+      }
+    },
+    {
+      "id": "submit_rfq_estimator",
+      "name": "Submit RFQ Estimator",
+      "description": "Submit project parameters to Bongshai Engineering's RFQ Estimator to request a custom quote.",
+      "method": "declarative",
+      "endpoint": "/",
+      "parameters": {
+        "required": ["project_category", "area_sqft", "floors", "phone"]
+      }
+    }
+  ]
+}
