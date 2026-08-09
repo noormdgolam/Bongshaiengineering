@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(py --version)",
+      "Bash(py \"C:/Users/munna/AppData/Local/Temp/claude/e--web-Bongshai-Engineering/6ce3497e-6452-475d-a28b-2ed218fc156a/scratchpad/light_redesign.py\")",
+      "Bash(py \"C:/Users/munna/AppData/Local/Temp/claude/e--web-Bongshai-Engineering/6ce3497e-6452-475d-a28b-2ed218fc156a/scratchpad/light_redesign_pass2.py\")"
+    ]
+  }
+}

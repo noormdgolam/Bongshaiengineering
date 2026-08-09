@@ -21,7 +21,7 @@ export const COMPANY_INFO = {
     companyRegistration: "September 2012"
   },
   contacts: {
-    addressMain: "House #28, Road #08, Sector #11, Uttara C/A, Dhaka-1230",
+    addressMain: "Alordhara, Level 05, House #18, Road #18, Sector #10, Uttara C/A, Dhaka 1230",
     addressBranch: "Alordhara, Level 05, House #18, Road #18, Sector #10, Uttara C/A, Dhaka 1230",
     phone: "+88 02 895 2607",
     cell: "+88 01714-104940 / +88 01789-949060",
