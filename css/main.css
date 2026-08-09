@@ -512,6 +512,40 @@ ul {
   }
 }
 
+/* --------------------------------------------------------------------------
+   Overflow-prevention structural fixes (apply at ALL viewport widths, not
+   just mobile — a 768-1180px tablet/narrow-desktop window hits the exact
+   same "wide table in a fixed-column grid" overflow bug as a phone does).
+   -------------------------------------------------------------------------- */
+
+/* Grid/flex items default to min-width:auto, refusing to shrink below their
+   content's intrinsic width (e.g. a wide table) regardless of how many
+   columns the grid has — reset so wide children can shrink and scroll
+   internally instead of forcing the whole grid wider than the viewport. */
+[style*="grid-template-columns"] > *,
+[style*="display: flex"] > *,
+[style*="display:flex"] > * {
+  min-width: 0;
+}
+
+/* Some pages place .equipment-table directly in a padded card with no
+   .equipment-table-wrap at all (min-width on the table always wins over
+   max-width per spec, so the table itself can't be the scroll container —
+   its direct parent must be). */
+div:has(> .equipment-table) {
+  overflow-x: auto;
+  max-width: 100%;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Any other plain <table> without a dedicated wrapper. */
+table:not(.equipment-table) {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
 @media (max-width: 640px) {
   .top-bar {
     display: none;
@@ -536,37 +570,11 @@ ul {
   [style*="grid-template-columns"] {
     grid-template-columns: 1fr !important;
   }
-  /* Grid/flex items default to min-width:auto, refusing to shrink below their
-     content's intrinsic width (e.g. a wide table) even when the grid itself
-     is 1 column — reset so wide children can shrink and scroll internally. */
-  [style*="grid-template-columns"] > *,
-  [style*="display: flex"] > *,
-  [style*="display:flex"] > * {
-    min-width: 0;
-  }
 
   /* Allow long button/link text to wrap instead of forcing horizontal overflow. */
   .btn {
     white-space: normal;
     text-align: center;
-  }
-
-  /* Some pages place .equipment-table directly in a padded card with no
-     .equipment-table-wrap at all (min-width on the table always wins over
-     max-width per spec, so the table itself can't be the scroll container —
-     its direct parent must be). */
-  div:has(> .equipment-table) {
-    overflow-x: auto;
-    max-width: 100%;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  /* Any other plain <table> without a dedicated wrapper. */
-  table:not(.equipment-table) {
-    display: block;
-    max-width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
   }
 }
 
