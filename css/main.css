@@ -499,6 +499,19 @@ ul {
   }
 }
 
+@media (max-width: 480px) {
+  .brand-text-sub {
+    display: none;
+  }
+  .nav-actions {
+    gap: 0.5rem;
+  }
+  .nav-actions .btn-primary {
+    padding: 0.5rem 0.75rem !important;
+    font-size: 0.78rem !important;
+  }
+}
+
 @media (max-width: 640px) {
   .top-bar {
     display: none;
@@ -514,6 +527,46 @@ ul {
   }
   .project-grid {
     grid-template-columns: 1fr;
+  }
+
+  /* Collapse any hardcoded inline multi-column grid (repeat(2/3/4, 1fr),
+     "1fr 1fr", etc.) to a single column — many pages hardcode column counts
+     inline with no responsive fallback, which forces horizontal overflow on
+     narrow screens. */
+  [style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important;
+  }
+  /* Grid/flex items default to min-width:auto, refusing to shrink below their
+     content's intrinsic width (e.g. a wide table) even when the grid itself
+     is 1 column — reset so wide children can shrink and scroll internally. */
+  [style*="grid-template-columns"] > *,
+  [style*="display: flex"] > *,
+  [style*="display:flex"] > * {
+    min-width: 0;
+  }
+
+  /* Allow long button/link text to wrap instead of forcing horizontal overflow. */
+  .btn {
+    white-space: normal;
+    text-align: center;
+  }
+
+  /* Some pages place .equipment-table directly in a padded card with no
+     .equipment-table-wrap at all (min-width on the table always wins over
+     max-width per spec, so the table itself can't be the scroll container —
+     its direct parent must be). */
+  div:has(> .equipment-table) {
+    overflow-x: auto;
+    max-width: 100%;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Any other plain <table> without a dedicated wrapper. */
+  table:not(.equipment-table) {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 }
 

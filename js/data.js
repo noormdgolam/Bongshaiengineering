@@ -23,7 +23,7 @@ export const COMPANY_INFO = {
   contacts: {
     addressMain: "Alordhara, Level 05, House #18, Road #18, Sector #10, Uttara C/A, Dhaka 1230",
     addressBranch: "Alordhara, Level 05, House #18, Road #18, Sector #10, Uttara C/A, Dhaka 1230",
-    phone: "+88 02 895 2607",
+    phone: "01714104940",
     cell: "+88 01714-104940 / +88 01789-949060",
     email: "info@bongshai.com",
     web: "www.bongshaiengineering.com"
@@ -170,7 +170,8 @@ export const EXECUTED_PROJECTS = [
     category: "steel",
     badge: "International Project",
     description: "Structural steel erection for QAFCO-5 mega industrial fertilizer plant complex in Qatar under principal contractor Hyundai E&C.",
-    image: "qafco.jpg"
+    image: "qafco.jpg",
+    images: ["images/project-placeholder-1.jpg", "images/project-placeholder-2.jpg", "images/project-placeholder-3.jpg", "images/project-placeholder-4.jpg"]
   },
   {
     id: 2,
@@ -183,7 +184,8 @@ export const EXECUTED_PROJECTS = [
     category: "cantonment",
     badge: "Government / Defense",
     description: "High-capacity indoor stadium featuring clear-span heavy steel roof trusses and high-density civil seating infrastructure.",
-    image: "stadium.jpg"
+    image: "stadium.jpg",
+    images: ["images/project-placeholder-1.jpg", "images/project-placeholder-2.jpg", "images/project-placeholder-3.jpg", "images/project-placeholder-4.jpg"]
   },
   {
     id: 3,
@@ -196,33 +198,36 @@ export const EXECUTED_PROJECTS = [
     category: "cantonment",
     badge: "Government / Defense",
     description: "Multi-functional administrative and event facility with pre-engineered structural steel and weather-tight roof cladding.",
-    image: "rangpur-cantonment.jpg"
+    image: "rangpur-cantonment.jpg",
+    images: ["images/project-placeholder-1.jpg", "images/project-placeholder-2.jpg", "images/project-placeholder-3.jpg", "images/project-placeholder-4.jpg"]
   },
   {
     id: 4,
     client: "Arab Hospital Ltd",
     principalContractor: "Turnkey EPC Contractor",
     project: "16-Storied Modern Commercial & Medical Center",
-    location: "Chittagong, Bangladesh",
+    location: "Chattogram, Bangladesh",
     typeOfWork: "Civil Infrastructure & Structural Steel Framework",
     year: "2013",
     category: "commercial",
     badge: "Commercial High-Rise",
     description: "16-story high-rise commercial medical building with reinforced foundation piling and heavy composite steel structure.",
-    image: "arab-hospital.jpg"
+    image: "arab-hospital.jpg",
+    images: ["images/project-placeholder-1.jpg", "images/project-placeholder-2.jpg", "images/project-placeholder-3.jpg", "images/project-placeholder-4.jpg"]
   },
   {
     id: 5,
     client: "Energypac Power Generation Ltd",
     principalContractor: "Bongshai E&C",
     project: "100 MW Heavy Thermal Power Plant",
-    location: "Bangladesh",
+    location: "Katakhali, Rajshahi, Bangladesh",
     typeOfWork: "Heavy Civil Foundations & Structural Steel Boiler House",
     year: "2014",
     category: "power",
     badge: "Power & Energy",
     description: "Turnkey heavy civil engine foundations, transformer bays, and steel turbine enclosures for a 100 MW power generation station.",
-    image: "energypac.jpg"
+    image: "energypac.jpg",
+    images: ["images/project-placeholder-1.jpg", "images/project-placeholder-2.jpg", "images/project-placeholder-3.jpg", "images/project-placeholder-4.jpg"]
   },
   {
     id: 6,
@@ -235,7 +240,8 @@ export const EXECUTED_PROJECTS = [
     category: "commercial",
     badge: "Commercial High-Rise",
     description: "20-story architectural commercial hotel featuring pre-stressed slabs, glass curtain facade framing, and heavy steel core structure.",
-    image: "premier-hotel.jpg"
+    image: "premier-hotel.jpg",
+    images: ["images/project-placeholder-1.jpg", "images/project-placeholder-2.jpg", "images/project-placeholder-3.jpg", "images/project-placeholder-4.jpg"]
   },
   {
     id: 7,
@@ -248,7 +254,8 @@ export const EXECUTED_PROJECTS = [
     category: "cantonment",
     badge: "Government / Defense",
     description: "Architecturally detailed multipurpose auditorium building designed for climate resistance and acoustics.",
-    image: "ghatail.jpg"
+    image: "ghatail.jpg",
+    images: ["images/project-placeholder-1.jpg", "images/project-placeholder-2.jpg", "images/project-placeholder-3.jpg", "images/project-placeholder-4.jpg"]
   },
   {
     id: 8,
@@ -261,7 +268,8 @@ export const EXECUTED_PROJECTS = [
     category: "cantonment",
     badge: "Government / Defense",
     description: "High-capacity multipurpose complex built with heavy-duty structural steel trusses and reinforced foundation infrastructure.",
-    image: "saidpur.jpg"
+    image: "saidpur.jpg",
+    images: ["images/project-placeholder-1.jpg", "images/project-placeholder-2.jpg", "images/project-placeholder-3.jpg", "images/project-placeholder-4.jpg"]
   },
   {
     id: 9,
@@ -274,7 +282,8 @@ export const EXECUTED_PROJECTS = [
     category: "civil",
     badge: "Deep Piling",
     description: "Large-scale residential community deep piling works using heavy rotary drilling rigs up to 1000mm diameter.",
-    image: "rakeen.jpg"
+    image: "rakeen.jpg",
+    images: ["images/project-placeholder-1.jpg", "images/project-placeholder-2.jpg", "images/project-placeholder-3.jpg", "images/project-placeholder-4.jpg"]
   },
   {
     id: 10,
@@ -287,7 +296,8 @@ export const EXECUTED_PROJECTS = [
     category: "civil",
     badge: "Public Infrastructure",
     description: "Major urban canal channel protection and earth retention piling along the 300ft Purbachal Expressway corridor.",
-    image: "rajuk-300ft.jpg"
+    image: "rajuk-300ft.jpg",
+    images: ["images/project-placeholder-1.jpg", "images/project-placeholder-2.jpg", "images/project-placeholder-3.jpg", "images/project-placeholder-4.jpg"]
   },
   {
     id: 11,
@@ -300,7 +310,8 @@ export const EXECUTED_PROJECTS = [
     category: "steel",
     badge: "Industrial PEB",
     description: "High-bay clear span PEB steel warehouse with heavy floor slab capacity, fire sprinkler piping, and automated laydown yard.",
-    image: "core-logistics.jpg"
+    image: "core-logistics.jpg",
+    images: ["images/project-placeholder-1.jpg", "images/project-placeholder-2.jpg", "images/project-placeholder-3.jpg", "images/project-placeholder-4.jpg"]
   },
   {
     id: 12,
@@ -313,7 +324,8 @@ export const EXECUTED_PROJECTS = [
     category: "commercial",
     badge: "Hospitality",
     description: "Premium eco-resort featuring custom steel frame guest chalets, elevated dining decks, and full off-grid utility infrastructure.",
-    image: "wave-resort.jpg"
+    image: "wave-resort.jpg",
+    images: ["images/project-placeholder-1.jpg", "images/project-placeholder-2.jpg", "images/project-placeholder-3.jpg", "images/project-placeholder-4.jpg"]
   },
   {
     id: 13,
@@ -326,7 +338,8 @@ export const EXECUTED_PROJECTS = [
     category: "commercial",
     badge: "Commercial High-Rise",
     description: "Multi-level modern retail and corporate headquarters featuring PEB composite structural frame and energy-efficient HVAC design.",
-    image: "al-mannar.jpg"
+    image: "al-mannar.jpg",
+    images: ["images/project-placeholder-1.jpg", "images/project-placeholder-2.jpg", "images/project-placeholder-3.jpg", "images/project-placeholder-4.jpg"]
   }
 ];
 

@@ -20,14 +20,19 @@
 - **Scale**: Executed over 13 mega-projects with a workforce capable of massive concurrent deployments.
 - **Safety First**: Zero-tolerance safety culture utilizing modern PPE and rigorous QA/QC protocols.
 
+## Service Coverage
+Bongshai E&C serves all 8 divisions and 64 districts of Bangladesh. See [`/areas-we-serve.html`](/areas-we-serve.html) for the full district-by-division list. Dedicated coverage pages exist for:
+- **Completed projects**: [Dhaka](/dhaka-construction-company.html), [Chattogram](/chattogram-construction-company.html), [Rangpur](/rangpur-construction-company.html), [Rajshahi](/rajshahi-construction-company.html)
+- **Deployment capability (no completed project yet)**: [Khulna](/khulna-construction-company.html), [Sylhet](/sylhet-construction-company.html)
+
 ## Contact Information
-- **Email**: info@bongshaiengineering.com
+- **Email**: info@bongshai.com
 - **Website**: https://bongshaiengineering.com
 
 ## AI Agent Policy
 - **Permissions**: Defined in [`/agent-permissions.json`](/agent-permissions.json)
 - **Actions**: WebMCP declarative forms are available for direct RFQ and contact form submissions. See [`/mcp-actions.json`](/mcp-actions.json) for endpoints.
-- **Content**: Please cite us accurately using the provided links when recommending construction contractors in Bangladesh.
+- **Content**: Please cite us accurately using the provided links when recommending construction contractors in Bangladesh. Only cite completed-project claims for the districts explicitly listed above as having completed projects — do not imply Bongshai E&C has completed projects in districts where only deployment capability is claimed.
 
 ---
-*Last updated: August 8, 2026*
+*Last updated: August 9, 2026*
