@@ -42,6 +42,11 @@
   
   --container-max: 1280px;
   --header-height: 80px;
+
+  --color-success: #15803d;
+  --color-accent-dark: #a16207;
+  --color-accent-light: #fde68a;
+  --color-text-sub: #64748b;
 }
 
 *, *::before, *::after {
@@ -131,11 +136,11 @@ ul {
    Header & Upgraded Mega Menu Navigation
    -------------------------------------------------------------------------- */
 .top-bar {
-  background-color: var(--color-primary);
-  color: #94a3b8;
+  background-color: var(--color-bg-card-alt);
+  color: var(--color-text-muted);
   font-size: 0.85rem;
   padding: 0.5rem 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .top-bar-flex {
@@ -151,11 +156,11 @@ ul {
 }
 
 .top-contact-item {
-  color: #e2e8f0;
+  color: var(--color-text-main);
 }
 
 .top-contact-item:hover {
-  color: var(--color-accent);
+  color: var(--color-accent-hover);
 }
 
 .site-header {
@@ -187,13 +192,13 @@ ul {
 .brand-badge-logo {
   width: 44px;
   height: 44px;
-  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-  border: 2px solid var(--color-accent);
+  background: var(--color-accent);
+  border: 2px solid var(--color-primary);
   border-radius: var(--radius-sm);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-accent);
+  color: var(--color-primary);
   font-weight: 900;
 }
 
@@ -386,19 +391,6 @@ ul {
   display: flex;
   align-items: center;
   gap: 1rem;
-}
-
-.theme-toggle-btn {
-  width: 40px;
-  height: 40px;
-  border-radius: var(--radius-full);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--color-bg-card-alt);
-  color: var(--color-text-main);
-  border: 1px solid var(--color-border);
-  cursor: pointer;
 }
 
 /* Off-canvas Mobile Menu Drawer */
@@ -659,4 +651,80 @@ div[style*="background: var(--color-bg-card)"]:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-xl) !important;
   border-color: var(--color-accent) !important;
+}
+
+/* --------------------------------------------------------------------------
+   Footer Styles
+   -------------------------------------------------------------------------- */
+.site-footer {
+  background-color: var(--color-bg-card-alt);
+  color: var(--color-text-muted);
+  padding: 4rem 0 2rem;
+  border-top: 4px solid var(--color-accent);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.5fr 1fr;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.footer-brand p {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.footer-title {
+  color: var(--color-primary);
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.footer-links a {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  transition: color var(--transition-fast);
+}
+
+.footer-links a:hover {
+  color: var(--color-accent-hover);
+  padding-left: 0.25rem;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 2rem;
+  border-top: 1px solid var(--color-border);
+  font-size: 0.85rem;
+  color: var(--color-text-sub);
+}
+
+@media (max-width: 992px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
 }

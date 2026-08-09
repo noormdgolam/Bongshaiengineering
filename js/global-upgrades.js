@@ -76,9 +76,9 @@ function initFloatingActionBar() {
       width: 52px;
       height: 52px;
       border-radius: 50%;
-      background: #0f172a;
-      border: 2px solid #eab308;
-      color: #eab308;
+      background: #eab308;
+      border: 2px solid #0f172a;
+      color: #0f172a;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -160,10 +160,10 @@ function initBreadcrumbs() {
   const cleanTitle = pageName.replace('.html', '').replace(/-/g, ' ').toUpperCase();
 
   breadcrumbDiv.innerHTML = `
-    <div style="font-size: 0.85rem; color: rgba(255, 255, 255, 0.7); display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
-      <a href="index.html" style="color: #eab308; font-weight: 600;">Home</a>
+    <div style="font-size: 0.85rem; color: var(--color-text-muted); display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+      <a href="index.html" style="color: var(--color-accent-hover); font-weight: 600;">Home</a>
       <span>/</span>
-      <span style="color: #ffffff; font-weight: 700;">${cleanTitle}</span>
+      <span style="color: var(--color-text-main); font-weight: 700;">${cleanTitle}</span>
     </div>
   `;
 
