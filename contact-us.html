@@ -293,17 +293,49 @@
                 }
                 emailError.style.display = 'none';
 
-                var subject = 'Project Inquiry from ' + name;
-                var body = 'Name: ' + name + '\n' +
-                           'Phone: ' + phone + '\n' +
-                           'Email: ' + email + '\n\n' +
-                           'Project Scope:\n' + message;
-                var mailtoLink = 'mailto:info@bongshai.com' +
-                  '?subject=' + encodeURIComponent(subject) +
-                  '&body=' + encodeURIComponent(body);
-                window.location.href = mailtoLink;
-                alert('Opening your email app to send this inquiry to info@bongshai.com. If it doesn\'t open, please email us directly at info@bongshai.com with your details.');
-                this.reset();
+                var formEl = this;
+                var submitBtn = formEl.querySelector('button[type="submit"]');
+                var originalBtnText = submitBtn.textContent;
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Sending...';
+
+                function fallbackToMailto() {
+                  var subject = 'Project Inquiry from ' + name;
+                  var body = 'Name: ' + name + '\n' +
+                             'Phone: ' + phone + '\n' +
+                             'Email: ' + email + '\n\n' +
+                             'Project Scope:\n' + message;
+                  var mailtoLink = 'mailto:info@bongshai.com' +
+                    '?subject=' + encodeURIComponent(subject) +
+                    '&body=' + encodeURIComponent(body);
+                  window.location.href = mailtoLink;
+                  alert('We could not reach our message service just now, so we opened your email app instead to send this to info@bongshai.com. If nothing opened, please email us directly at info@bongshai.com.');
+                }
+
+                fetch('https://formsubmit.co/ajax/info@bongshai.com', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                  body: JSON.stringify({
+                    name: name,
+                    phone: phone,
+                    email: email,
+                    message: message,
+                    _subject: 'Project Inquiry from ' + name,
+                    _template: 'table',
+                    _captcha: 'false'
+                  })
+                }).then(function (res) {
+                  if (!res.ok) throw new Error('Request failed');
+                  return res.json();
+                }).then(function () {
+                  alert('Thank you, ' + name + '! Your inquiry has been sent to Bongshai Engineering & Construction. Our team will reply within 24-48 hours.');
+                  formEl.reset();
+                }).catch(function () {
+                  fallbackToMailto();
+                }).finally(function () {
+                  submitBtn.disabled = false;
+                  submitBtn.textContent = originalBtnText;
+                });
               });
             })();
           </script>

@@ -90,12 +90,50 @@ export function initEstimator() {
       `Budget Range: ${budget}\n` +
       `Timeline: ${timeline}`;
 
-    const mailtoLink = `mailto:info@bongshai.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    window.location.href = mailtoLink;
+    function fallbackToMailto() {
+      const mailtoLink = `mailto:info@bongshai.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.location.href = mailtoLink;
+      showToast('Could not reach our message service — opening your email app instead...');
+    }
 
-    showToast('Opening your email app to send this RFQ to info@bongshai.com...');
-    form.reset();
-    if (resultCard) resultCard.style.display = 'none';
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const originalBtnText = submitBtn ? submitBtn.textContent : '';
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+    }
+
+    fetch('https://formsubmit.co/ajax/info@bongshai.com', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        project_category: categoryLabel,
+        area_sqft: area,
+        floors: stories,
+        phone: phone,
+        estimated_budget: budget,
+        estimated_timeline: timeline,
+        _subject: subject,
+        _template: 'table',
+        _captcha: 'false'
+      })
+    }).then((res) => {
+      if (!res.ok) throw new Error('Request failed');
+      return res.json();
+    }).then(() => {
+      showToast('Your RFQ has been sent! Our engineering team will contact you within 24 hours.');
+      form.reset();
+      if (resultCard) resultCard.style.display = 'none';
+    }).catch(() => {
+      fallbackToMailto();
+      form.reset();
+      if (resultCard) resultCard.style.display = 'none';
+    }).finally(() => {
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalBtnText;
+      }
+    });
   });
 }
 
