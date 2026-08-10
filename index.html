@@ -853,6 +853,11 @@
 
       <div class="estimator-card">
         <form id="rfqEstimatorForm" data-mcp-action="submit_rfq_estimator">
+          <!-- Honeypot: hidden from real users, bots often auto-fill every field -->
+          <div style="position: absolute; left: -9999px; opacity: 0;" aria-hidden="true">
+            <label for="rfqWebsite">Leave this field blank</label>
+            <input type="text" name="website" id="rfqWebsite" tabindex="-1" autocomplete="off">
+          </div>
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
             <div class="form-group">
               <label class="form-label" for="calcProjectType">Project Structural Category</label>

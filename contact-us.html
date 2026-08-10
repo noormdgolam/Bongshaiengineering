@@ -209,8 +209,14 @@
         <!-- Form Column -->
         <div style="background: var(--color-bg-card); padding: 2.5rem; border-radius: var(--radius-lg); border: 1px solid var(--color-border); box-shadow: var(--shadow-md);">
           <h3 style="font-size: 1.35rem; font-weight: 800; margin-bottom: 2rem; color: var(--color-primary);">How can you send a direct consultation message?</h3>
-          <form data-mcp-action="submit_contact_form" onsubmit="event.preventDefault(); alert('Thank you for contacting Bongshai Engineering. We will reply to your message promptly.'); this.reset();">
-            
+          <form data-mcp-action="submit_contact_form" id="contactForm">
+
+            <!-- Honeypot: hidden from real users, bots often auto-fill every field -->
+            <div style="position: absolute; left: -9999px; opacity: 0;" aria-hidden="true">
+              <label for="contactWebsite">Leave this field blank</label>
+              <input type="text" name="website" id="contactWebsite" tabindex="-1" autocomplete="off">
+            </div>
+
             <div class="form-grid">
               <div class="form-group">
                 <label class="form-label" for="contactName">Your Full Name</label>
@@ -225,17 +231,82 @@
             <div class="form-group">
               <label class="form-label" for="contactEmail">Email Address</label>
               <input type="email" name="email" id="contactEmail" class="form-control" placeholder="john@company.com" required>
+              <p id="contactEmailError" style="display:none; color: #dc2626; font-size: 0.82rem; margin-top: 0.4rem;">Please use a real, permanent email address — temporary/disposable email addresses aren't accepted so we can actually reach you back.</p>
             </div>
 
             <div class="form-group">
               <label class="form-label" for="contactMessage">Project Scope Details</label>
               <textarea name="message" id="contactMessage" class="form-control" rows="5" placeholder="Describe your structural or construction requirements..." required></textarea>
             </div>
-            
+
             <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem; font-size: 1.05rem;">
               Send Message Now
             </button>
           </form>
+          <script>
+            (function () {
+              var formLoadedAt = Date.now();
+              var DISPOSABLE_EMAIL_DOMAINS = [
+                'mailinator.com', 'guerrillamail.com', 'guerrillamail.info', 'guerrillamail.biz',
+                'guerrillamail.de', 'sharklasers.com', 'grr.la', 'guerrillamailblock.com',
+                'pokemail.net', 'spam4.me', 'trashmail.com', 'throwawaymail.com',
+                'temp-mail.org', 'tempmail.com', '10minutemail.com', '10minutemail.net',
+                'yopmail.com', 'yopmail.net', 'fakeinbox.com', 'dispostable.com',
+                'mailnesia.com', 'mintemail.com', 'getnada.com', 'moakt.com',
+                'tempinbox.com', 'emailondeck.com', 'mohmal.com', 'tmpmail.org',
+                'tmpmail.net', 'mytemp.email', 'temp-mail.io', 'mailcatch.com',
+                'spamgourmet.com', 'jetable.org', 'mailexpire.com', 'mailtemp.info',
+                'discard.email', 'maildrop.cc', 'burnermail.io', 'emailfake.com'
+              ];
+              var EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+              function isDisposableEmail(email) {
+                var domain = email.split('@')[1];
+                if (!domain) return false;
+                domain = domain.toLowerCase().trim();
+                return DISPOSABLE_EMAIL_DOMAINS.indexOf(domain) !== -1;
+              }
+
+              document.getElementById('contactForm').addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                var honeypot = document.getElementById('contactWebsite').value;
+                var name = document.getElementById('contactName').value;
+                var phone = document.getElementById('contactPhone').value;
+                var email = document.getElementById('contactEmail').value.trim();
+                var message = document.getElementById('contactMessage').value;
+                var emailError = document.getElementById('contactEmailError');
+
+                // Bot signal 1: honeypot field got filled in (real users never see it).
+                if (honeypot) {
+                  return;
+                }
+                // Bot signal 2: submitted implausibly fast for a human to fill 4 fields.
+                if (Date.now() - formLoadedAt < 3000) {
+                  return;
+                }
+                // Real-email requirement: valid format + not a known disposable domain.
+                if (!EMAIL_PATTERN.test(email) || isDisposableEmail(email)) {
+                  emailError.style.display = 'block';
+                  document.getElementById('contactEmail').focus();
+                  return;
+                }
+                emailError.style.display = 'none';
+
+                var subject = 'Project Inquiry from ' + name;
+                var body = 'Name: ' + name + '\n' +
+                           'Phone: ' + phone + '\n' +
+                           'Email: ' + email + '\n\n' +
+                           'Project Scope:\n' + message;
+                var mailtoLink = 'mailto:info@bongshai.com' +
+                  '?subject=' + encodeURIComponent(subject) +
+                  '&body=' + encodeURIComponent(body);
+                window.location.href = mailtoLink;
+                alert('Opening your email app to send this inquiry to info@bongshai.com. If it doesn\'t open, please email us directly at info@bongshai.com with your details.');
+                this.reset();
+              });
+            })();
+          </script>
         </div>
       </div>
 

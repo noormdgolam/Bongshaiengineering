@@ -14,6 +14,8 @@ export function initEstimator() {
 
   if (!form) return;
 
+  const formLoadedAt = Date.now();
+
   const costRates = {
     "peb-steel": { min: 350, max: 550, timelineMonthsPer10kSqft: 1.5 }, // BDT per sqft rate or relative index
     "rcc-building": { min: 2200, max: 3200, timelineMonthsPer10kSqft: 4 },
@@ -57,7 +59,41 @@ export function initEstimator() {
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    showToast('Quote Request Submitted! Our Engineering team will contact you within 24 hours.');
+
+    const honeypot = document.getElementById('rfqWebsite');
+    // Bot signal 1: honeypot field got filled in (real users never see it).
+    if (honeypot && honeypot.value) {
+      return;
+    }
+    // Bot signal 2: submitted implausibly fast for a human to fill the form.
+    if (Date.now() - formLoadedAt < 3000) {
+      return;
+    }
+
+    const categoryLabel = projectTypeInput.options[projectTypeInput.selectedIndex]
+      ? projectTypeInput.options[projectTypeInput.selectedIndex].text
+      : projectTypeInput.value;
+    const area = areaInput.value;
+    const stories = storiesInput.value;
+    const phone = document.getElementById('clientContactPhone')
+      ? document.getElementById('clientContactPhone').value
+      : '';
+    const budget = outputBudget ? outputBudget.innerText : 'Not calculated';
+    const timeline = outputTimeline ? outputTimeline.innerText : 'Not calculated';
+
+    const subject = `RFQ: ${categoryLabel} - ${area} sqft`;
+    const body = `Project Structural Category: ${categoryLabel}\n` +
+      `Building Plinth Area: ${area} Sq. Ft\n` +
+      `Number of Floors / Levels: ${stories}\n` +
+      `Phone / WhatsApp: ${phone}\n\n` +
+      `Preliminary Feasibility Estimate:\n` +
+      `Budget Range: ${budget}\n` +
+      `Timeline: ${timeline}`;
+
+    const mailtoLink = `mailto:info@bongshai.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailtoLink;
+
+    showToast('Opening your email app to send this RFQ to info@bongshai.com...');
     form.reset();
     if (resultCard) resultCard.style.display = 'none';
   });
