@@ -41,9 +41,9 @@ export function initPortfolio() {
           </div>
           <p class="project-desc">${p.description}</p>
           <div style="display: flex; gap: 0.5rem; margin-top: auto;">
-            <button class="btn btn-outline project-view-btn" data-id="${p.id}" style="flex: 1; padding: 0.6rem 0.75rem; font-size: 0.825rem;">
+            <a href="project-detail.html?id=${p.id}" class="btn btn-outline project-view-btn" style="flex: 1; padding: 0.6rem 0.75rem; font-size: 0.825rem; text-align: center; text-decoration: none;">
               View Full Specs
-            </button>
+            </a>
             <button class="btn btn-primary project-compare-btn" data-id="${p.id}" style="padding: 0.6rem 0.75rem; font-size: 0.825rem;">
               Compare
             </button>
@@ -52,14 +52,6 @@ export function initPortfolio() {
       </div>
     `).join('');
 
-    // Attach click listeners to view buttons
-    container.querySelectorAll('.project-view-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        const id = parseInt(e.currentTarget.getAttribute('data-id'));
-        openProjectModal(id);
-      });
-    });
-
     // Attach comparison listeners
     container.querySelectorAll('.project-compare-btn').forEach(btn => {
       btn.addEventListener('click', (e) => {
@@ -67,51 +59,6 @@ export function initPortfolio() {
         openComparisonModal(id);
       });
     });
-  }
-
-  function openProjectModal(projectId) {
-    const project = EXECUTED_PROJECTS.find(p => p.id === projectId);
-    if (!project) return;
-
-    modalContent.innerHTML = `
-      <div style="margin-bottom: 1.5rem;">
-        <span class="project-badge" style="position: static; margin-bottom: 0.75rem; display: inline-block;">${project.badge}</span>
-        <div style="font-size: 0.85rem; color: var(--color-accent-hover); font-weight: 700; text-transform: uppercase;">${project.client}</div>
-        <h2 style="font-size: 1.75rem; font-weight: 800; color: var(--color-text-main); margin-top: 0.25rem;">${project.project}</h2>
-      </div>
-
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; background: var(--color-bg-card-alt); padding: 1.25rem; border-radius: var(--radius-md); margin-bottom: 1.5rem;">
-        <div>
-          <div style="font-size: 0.8rem; color: var(--color-text-muted);">Principal Contractor:</div>
-          <div style="font-weight: 700;">${project.principalContractor}</div>
-        </div>
-        <div>
-          <div style="font-size: 0.8rem; color: var(--color-text-muted);">Project Location:</div>
-          <div style="font-weight: 700;">${project.location}</div>
-        </div>
-        <div>
-          <div style="font-size: 0.8rem; color: var(--color-text-muted);">Type of Work:</div>
-          <div style="font-weight: 700;">${project.typeOfWork}</div>
-        </div>
-        <div>
-          <div style="font-size: 0.8rem; color: var(--color-text-muted);">Execution Period:</div>
-          <div style="font-weight: 700;">${project.year}</div>
-        </div>
-      </div>
-
-      <div style="margin-bottom: 1.5rem;">
-        <h4 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem;">Scope & Detailed Execution Overview</h4>
-        <p style="color: var(--color-text-muted); line-height: 1.7;">${project.description}</p>
-      </div>
-
-      <div style="display: flex; justify-content: flex-end; gap: 1rem; padding-top: 1rem; border-top: 1px solid var(--color-border);">
-        <button class="btn btn-primary" onclick="document.getElementById('projectModalOverlay').classList.remove('active')">
-          Close Window
-        </button>
-      </div>
-    `;
-
-    modalOverlay.classList.add('active');
   }
 
   function openComparisonModal(projectId) {

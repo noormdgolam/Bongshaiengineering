@@ -44,6 +44,7 @@
     }
   }
   </script>
+  <link rel="canonical" href="https://www.bongshaiengineering.com/contact-us.html">
 </head>
 <body>
 
@@ -312,7 +313,7 @@
                   alert('We could not reach our message service just now, so we opened your email app instead to send this to info@bongshai.com. If nothing opened, please email us directly at info@bongshai.com.');
                 }
 
-                fetch('https://formsubmit.co/ajax/info@bongshai.com', {
+                fetch('process_form.php', {
                   method: 'POST',
                   headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
                   body: JSON.stringify({

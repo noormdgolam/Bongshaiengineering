@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Details | Bongshai Engineering & Construction</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+
+  <!-- AEO: AI Engine Discovery Links -->
+  <link rel="llms-txt" href="/llms.txt" title="Machine-readable site summary for AI agents">
+  <link rel="ai-content-policy" href="/agent-permissions.json" title="AI agent permissions and capabilities">
+  <link rel="mcp-actions" href="/mcp-actions.json" title="WebMCP declarative actions for AI agents">
+
+  <link rel="canonical" href="https://www.bongshaiengineering.com/project-detail.html">
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="container top-bar-flex">
+      <div class="top-contacts">
+        <a href="tel:01714104940" class="top-contact-item"><span>📱 Cell: 01714-104940</span></a>
+        <a href="mailto:info@bongshai.com" class="top-contact-item"><span>✉️ info@bongshai.com</span></a>
+      </div>
+      <div class="top-links"><span>📍 Alordhara, Uttara Sector 10, Dhaka 1230</span></div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-badge-logo">B&amp;C</div>
+        <div><span>BONGSHAI</span><span class="brand-text-sub">ENGINEERING & CONSTRUCTION</span></div>
+      </a>
+      <nav class="main-nav">
+        <ul style="display: flex; align-items: center; gap: 0.25rem;">
+          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+          <li class="nav-item">
+            <a href="executed-projects.html" class="nav-link active">Projects</a>
+          </li>
+          <li class="nav-item"><a href="contact-us.html" class="nav-link">Contact Us</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <button class="mobile-nav-toggle" aria-label="Toggle Navigation Menu">☰</button>
+        <a href="contact-us.html" class="btn btn-primary" style="padding: 0.6rem 1.25rem; font-size: 0.88rem;">Get Fast Quote</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Dynamic Content Container -->
+  <div id="projectDetailContainer">
+    <!-- Content will be injected here by project-detail.js -->
+    <div style="text-align: center; padding: 5rem; color: var(--color-text-muted);">Loading project details...</div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 20px;">
+        <span style="color: var(--color-text-muted); font-size: 0.9rem;">Part of the Bongshai Group – see also <a href="https://noormdgolam.github.io/bongshaisteel/" target="_blank" style="color: #0369a1; text-decoration: none; font-weight: 600;">Bongshai Steel</a> &amp; <a href="https://noormdgolam.github.io/bongshaihousing/" target="_blank" style="color: #0369a1; text-decoration: none; font-weight: 600;">Bongshai Housing</a></span>
+      </div>
+      <div class="footer-bottom" style="border: none; padding: 2rem 0; text-align: center; color: var(--color-text-muted);">
+        <div>© 2008 - 2026 Bongshai Engineering & Construction. All Rights Reserved.</div>
+        <div style="margin-top: 0.25rem; font-weight: 600;">The Ultimate Construction Solution</div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="js/app.js"></script>
+  <script type="module" src="js/project-detail.js"></script>
+  <script src="js/global-upgrades.js"></script>
+</body>
+</html>

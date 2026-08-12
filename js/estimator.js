@@ -103,7 +103,7 @@ export function initEstimator() {
       submitBtn.textContent = 'Sending...';
     }
 
-    fetch('https://formsubmit.co/ajax/info@bongshai.com', {
+    fetch('process_form.php', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify({
